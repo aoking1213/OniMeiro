@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>鬼から逃げる迷路</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Top-down Maze</p>
+          <h1>鬼から逃げる迷路</h1>
+        </div>
+        <div class="actions">
+          <button id="pauseButton" class="restart" type="button" aria-pressed="false">一時停止</button>
+          <button id="restartButton" class="restart" type="button">最初から</button>
+        </div>
+      </header>
+
+      <section class="hud" aria-label="ゲーム状態">
+        <div>
+          <span>レベル</span>
+          <strong id="levelStatus">LEVEL 1</strong>
+        </div>
+        <div>
+          <span>壁越え</span>
+          <strong id="jumpStatus">未取得</strong>
+        </div>
+        <div>
+          <span>探知</span>
+          <strong id="radarStatus">未取得</strong>
+        </div>
+        <div>
+          <span>拳銃</span>
+          <strong id="gunStatus">LV15から</strong>
+        </div>
+        <div>
+          <span>鬼</span>
+          <strong id="oniStatus">出現待ち</strong>
+        </div>
+        <div>
+          <span>タイム</span>
+          <strong id="timer">0.0秒</strong>
+        </div>
+      </section>
+
+      <section class="board" aria-label="迷路">
+        <canvas id="gameCanvas" width="900" height="684"></canvas>
+        <div class="mobile-controls" aria-label="タッチ操作">
+          <div id="touchPad" class="touch-pad" role="group" aria-label="フリック方向キー">
+            <span class="touch-arrow touch-arrow-up">↑</span>
+            <span class="touch-arrow touch-arrow-right">→</span>
+            <span class="touch-arrow touch-arrow-down">↓</span>
+            <span class="touch-arrow touch-arrow-left">←</span>
+            <span id="touchKnob" class="touch-knob"></span>
+          </div>
+          <div class="mobile-actions">
+            <button type="button" data-action="jump" class="mobile-action jump">壁越え</button>
+            <button type="button" data-action="shoot" class="mobile-action shoot">撃つ</button>
+          </div>
+        </div>
+        <div id="message" class="message" aria-live="polite"></div>
+        <div id="gameMenu" class="game-menu" hidden>
+          <p id="gameMenuText">鬼に追いつかれました</p>
+          <div class="game-menu-actions">
+            <button id="retryLevelButton" type="button">このLVから再開</button>
+            <button id="menuRestartButton" type="button">LV1から</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="操作">
+        <p>矢印キー / WASDで移動。青は壁越え、赤はLV5から探知。LV15以降の拳銃はF / Enterで撃てます。</p>
+        <div class="pad">
+          <button type="button" data-move="up" aria-label="上へ移動">↑</button>
+          <button type="button" data-move="left" aria-label="左へ移動">←</button>
+          <button type="button" data-action="jump" class="jump">壁越え</button>
+          <button type="button" data-move="right" aria-label="右へ移動">→</button>
+          <button type="button" data-move="down" aria-label="下へ移動">↓</button>
+          <button type="button" data-action="shoot" class="shoot">撃つ</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
