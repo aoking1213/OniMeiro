@@ -16,6 +16,7 @@ const pauseButton = document.querySelector("#pauseButton");
 const restartButton = document.querySelector("#restartButton");
 const touchPad = document.querySelector("#touchPad");
 const touchKnob = document.querySelector("#touchKnob");
+const mobileControls = document.querySelector(".mobile-controls");
 const topbar = document.querySelector(".topbar");
 const hud = document.querySelector(".hud");
 
@@ -839,13 +840,15 @@ function formatTime(ms) {
 function resizeCanvas() {
   const viewportHeight = window.visualViewport?.height || window.innerHeight;
   const mobile = stageMode === MOBILE_STAGE.mode;
+  const mobileControlsHeight = mobile ? mobileControls.getBoundingClientRect().height || 126 : 0;
   const chromeHeight = mobile
-    ? topbar.getBoundingClientRect().height + hud.getBoundingClientRect().height + 34
+    ? topbar.getBoundingClientRect().height + hud.getBoundingClientRect().height + mobileControlsHeight + 50
     : 255;
-  const availableWidth = mobile ? Math.min(window.innerWidth - 12, 560) : Math.min(window.innerWidth - 28, 1120);
+  const availableWidth = mobile ? Math.max(280, window.innerWidth - 2) : Math.min(window.innerWidth - 28, 1120);
   const availableHeight = mobile ? Math.max(420, viewportHeight - chromeHeight) : Math.max(360, window.innerHeight - chromeHeight);
   const minCellSize = mobile ? 14 : 18;
-  cellSize = Math.max(minCellSize, Math.floor(Math.min(availableWidth / COLS, availableHeight / ROWS)));
+  const fittedCellSize = mobile ? availableWidth / COLS : Math.floor(Math.min(availableWidth / COLS, availableHeight / ROWS));
+  cellSize = Math.max(minCellSize, fittedCellSize);
   boardWidth = cellSize * COLS;
   boardHeight = cellSize * ROWS;
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>鬼から逃げる迷路</title>
+    <title>鬼迷路</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -11,7 +11,7 @@
       <header class="topbar">
         <div>
           <p class="eyebrow">Top-down Maze</p>
-          <h1>鬼から逃げる迷路</h1>
+          <h1>鬼迷路</h1>
         </div>
         <div class="actions">
           <button id="pauseButton" class="restart" type="button" aria-pressed="false">一時停止</button>
@@ -48,19 +48,6 @@
 
       <section class="board" aria-label="迷路">
         <canvas id="gameCanvas" width="900" height="684"></canvas>
-        <div class="mobile-controls" aria-label="タッチ操作">
-          <div id="touchPad" class="touch-pad" role="group" aria-label="フリック方向キー">
-            <span class="touch-arrow touch-arrow-up">↑</span>
-            <span class="touch-arrow touch-arrow-right">→</span>
-            <span class="touch-arrow touch-arrow-down">↓</span>
-            <span class="touch-arrow touch-arrow-left">←</span>
-            <span id="touchKnob" class="touch-knob"></span>
-          </div>
-          <div class="mobile-actions">
-            <button type="button" data-action="jump" class="mobile-action jump">壁越え</button>
-            <button type="button" data-action="shoot" class="mobile-action shoot">撃つ</button>
-          </div>
-        </div>
         <div id="message" class="message" aria-live="polite"></div>
         <div id="gameMenu" class="game-menu" hidden>
           <p id="gameMenuText">鬼に追いつかれました</p>
@@ -68,6 +55,20 @@
             <button id="retryLevelButton" type="button">このLVから再開</button>
             <button id="menuRestartButton" type="button">LV1から</button>
           </div>
+        </div>
+      </section>
+
+      <section class="mobile-controls" aria-label="タッチ操作">
+        <div id="touchPad" class="touch-pad" role="group" aria-label="フリック方向キー">
+          <span class="touch-arrow touch-arrow-up">↑</span>
+          <span class="touch-arrow touch-arrow-right">→</span>
+          <span class="touch-arrow touch-arrow-down">↓</span>
+          <span class="touch-arrow touch-arrow-left">←</span>
+          <span id="touchKnob" class="touch-knob"></span>
+        </div>
+        <div class="mobile-actions">
+          <button type="button" data-action="jump" class="mobile-action jump">壁越え</button>
+          <button type="button" data-action="shoot" class="mobile-action shoot">撃つ</button>
         </div>
       </section>
 
